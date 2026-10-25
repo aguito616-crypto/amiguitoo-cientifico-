@@ -372,9 +372,9 @@
       solveBtn.disabled = true;
 
       try {
-        const parteA = "AQ.Ab8RN6JQx_nmKQ5tcB2FsDov"; // Canvas Runtime provides API Key automatically if empty
-        const parteB = "LFJAoWdg8w-4jxxhzXcNYcxXeQ";
-        const apikey = parteA + parteB;
+        const parte1 = "AQ.Ab8RN6JQx_nmKQ5tcB2FsDov"; // Canvas Runtime provides API Key automatically if empty
+        const parte2 = "LFJAoWdg8w-4jxxhzXcNYcxXeQ";
+        const apiKey = parte1 + parte2;
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
         const systemPrompt = systemPrompts[currentSubject] + 
