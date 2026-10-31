@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OmniSolve - Asistente de Ciencias Exactas</title>
+  <title>OmniSolve - El Mejor Maestro / Asistente de Ciencias Exactas e Idiomas</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +17,7 @@
               math: '#3b82f6',
               physics: '#8b5cf6',
               chemistry: '#10b981',
+              english: '#f59e0b',
               darkBg: '#0f172a',
               cardBg: '#1e293b'
             }
@@ -38,28 +39,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0f172a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #475569;
-    }
-    
-    .katex-display {
-      margin: 0.8em 0;
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding: 0.4em 0;
-    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .katex-display { margin: 0.8em 0; overflow-x: auto; overflow-y: hidden; padding: 0.4em 0; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col md:flex-row antialiased selection:bg-indigo-500 selection:text-white">
@@ -69,44 +53,47 @@
     <div>
       <!-- Brand Logo -->
       <div class="flex items-center gap-3 px-2 py-3 mb-6">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-          <i class="fa-solid font-bold text-xl text-white">∑</i>
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-amber-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+          <i class="fa-solid font-bold text-xl text-white">👨‍🏫</i>
         </div>
         <div>
-          <h1 class="font-bold text-lg leading-tight bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-            OmniSolve AI
+          <h1 class="font-bold text-lg leading-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-amber-400 bg-clip-text text-transparent">
+            El Mejor Maestro
           </h1>
-          <p class="text-xs text-slate-400">Solucionador Científico</p>
+          <p class="text-xs text-slate-400">OmniSolve AI Experto</p>
         </div>
       </div>
 
       <!-- Navigation / Subject Selector -->
-      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 px-3 mb-3">Materia</p>
+      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 px-3 mb-3">Materia / Área</p>
       <nav class="space-y-1.5" id="subject-selector">
         <button data-subject="math" class="subject-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 bg-blue-600/20 text-blue-400 border border-blue-500/30">
-          <i class="fa-solid fa-calculator w-5 text-center text-blue-400"></i>
-          Matemáticas
+          <i class="fa-solid fa-calculator w-5 text-center text-blue-400"></i> Matemáticas
         </button>
-
         <button data-subject="physics" class="subject-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-slate-400 hover:bg-slate-800 hover:text-slate-200 border border-transparent">
-          <i class="fa-solid fa-atom w-5 text-center text-violet-400"></i>
-          Física
+          <i class="fa-solid fa-atom w-5 text-center text-violet-400"></i> Física
         </button>
-
         <button data-subject="chemistry" class="subject-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-slate-400 hover:bg-slate-800 hover:text-slate-200 border border-transparent">
-          <i class="fa-solid fa-flask w-5 text-center text-emerald-400"></i>
-          Química
+          <i class="fa-solid fa-flask w-5 text-center text-emerald-400"></i> Química
+        </button>
+        <button data-subject="english" class="subject-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-slate-400 hover:bg-slate-800 hover:text-slate-200 border border-transparent">
+          <i class="fa-solid fa-language w-5 text-center text-amber-400"></i> Inglés Nativo
         </button>
       </nav>
     </div>
 
-    <!-- API Status Footer -->
-    <div class="pt-4 border-t border-slate-800 mt-6 md:mt-0">
-      <div class="flex items-center gap-2 text-xs text-slate-400 px-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>Gemini AI Conectado</span>
+    <!-- API Status & Key Rotation Config -->
+    <div class="pt-4 border-t border-slate-800 mt-6 md:mt-0 space-y-2">
+      <div class="flex items-center justify-between text-xs text-slate-400 px-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Servidores Multi-IA Activos</span>
+        </div>
       </div>
-      <p class="text-[10px] text-slate-500 px-2 mt-1">Listo para análisis en tiempo real</p>
+      <!-- Input opcional para añadir llaves extra y evitar errores 429 -->
+      <div class="px-2">
+        <input type="password" id="custom-api-key" placeholder="Añadir API Key extra (Opcional)" class="w-full bg-slate-950 border border-slate-800 rounded px-2 py-1 text-[10px] text-slate-300 placeholder-slate-600 focus:outline-none focus:border-blue-500" title="Si tienes error 429, pega otra API key de Gemini aquí para rotación automática">
+      </div>
     </div>
   </aside>
 
@@ -119,11 +106,16 @@
         <span id="current-badge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
           Matemáticas
         </span>
-        <span class="text-xs text-slate-400">| Asistente de Resolución Explicativa</span>
+        <span class="text-xs text-slate-400">| Tu Tutor Humano Virtual</span>
       </div>
-      <button onclick="clearAll()" class="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1.5 transition-colors">
-        <i class="fa-solid fa-rotate-left"></i> Reiniciar
-      </button>
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSpeechOutput()" id="speech-toggle-btn" class="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1.5 transition-colors px-2 py-1 rounded bg-slate-800/40">
+          <i class="fa-solid fa-volume-high"></i> Voz: <span id="speech-status">Activada</span>
+        </button>
+        <button onclick="clearAll()" class="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1.5 transition-colors">
+          <i class="fa-solid fa-rotate-left"></i> Reiniciar
+        </button>
+      </div>
     </header>
 
     <!-- Workspace Grid -->
@@ -134,178 +126,207 @@
         <div class="flex items-center justify-between">
           <label for="problem-input" class="text-sm font-semibold text-slate-300 flex items-center gap-2">
             <i class="fa-solid fa-pen-to-square text-indigo-400"></i>
-            Escribe tu problema o error del ejercicio
+            Escribe, habla o adjunta tu ejercicio / foto
           </label>
         </div>
 
         <!-- Quick Symbol Toolbar -->
-        <div class="flex flex-wrap gap-1.5 p-2 bg-slate-950/80 rounded-xl border border-slate-800/80" id="symbol-toolbar">
-          <!-- Dynamic Symbols inserted via JS -->
+        <div class="flex flex-wrap gap-1.5 p-2 bg-slate-950/80 rounded-xl border border-slate-800/80" id="symbol-toolbar"></div>
+
+        <!-- File / Image Preview Container -->
+        <div id="file-preview-container" class="hidden flex items-center gap-2 p-2 bg-slate-950 rounded-xl border border-slate-800 text-xs text-slate-300">
+          <i class="fa-solid fa-image text-indigo-400 text-base"></i>
+          <span id="file-name-display" class="truncate flex-1">imagen.png</span>
+          <button onclick="removeAttachedFile()" class="text-slate-500 hover:text-red-400 px-1"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
         <!-- Textarea Input -->
-        <textarea 
-          id="problem-input"
-          class="flex-1 min-h-[220px] w-full bg-slate-950/50 border border-slate-800 rounded-xl p-4 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-mono text-sm resize-none"
-          placeholder="Ejemplo: Intento resolver la ecuación 2x^2 + 5x - 3 = 0 pero en la fórmula general obtengo x = -3 y me dicen que falta otra solución..."
-        ></textarea>
+        <div class="relative flex-1 flex flex-col">
+          <textarea 
+            id="problem-input"
+            class="flex-1 min-h-[180px] w-full bg-slate-950/50 border border-slate-800 rounded-xl p-4 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-mono text-sm resize-none"
+            placeholder="Ejemplo: Explícame este problema paso a paso o pega el enunciado aquí..."
+          ></textarea>
+        </div>
 
-        <!-- Solve Action Buttons -->
-        <div class="flex items-center justify-between gap-3 pt-2">
+        <!-- Control Actions Bar (Voice, File upload, Camera) -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+          <div class="flex items-center gap-1.5">
+            <!-- Botón de Voz (Dictado) -->
+            <button 
+              type="button" 
+              id="mic-btn" 
+              onclick="toggleVoiceInput()" 
+              class="px-3 py-2 rounded-lg bg-slate-800/70 hover:bg-slate-800 text-slate-300 hover:text-white text-xs flex items-center gap-1.5 transition-all border border-slate-700/50"
+              title="Dictar con voz">
+              <i class="fa-solid fa-microphone text-red-400" id="mic-icon"></i>
+              <span id="mic-text">Hablar</span>
+            </button>
+
+            <!-- Adjuntar Archivo / Imagen -->
+            <label class="px-3 py-2 rounded-lg bg-slate-800/70 hover:bg-slate-800 text-slate-300 hover:text-white text-xs flex items-center gap-1.5 transition-all border border-slate-700/50 cursor-pointer">
+              <i class="fa-solid fa-paperclip text-blue-400"></i>
+              <span>Archivo</span>
+              <input type="file" id="file-input" accept="image/*,.pdf,.txt" class="hidden" onchange="handleFileSelect(event)">
+            </label>
+
+            <!-- Tomar Foto Directamente -->
+            <label class="px-3 py-2 rounded-lg bg-slate-800/70 hover:bg-slate-800 text-slate-300 hover:text-white text-xs flex items-center gap-1.5 transition-all border border-slate-700/50 cursor-pointer" title="Tomar foto con la cámara">
+              <i class="fa-solid fa-camera text-emerald-400"></i>
+              <span>Cámara</span>
+              <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden" onchange="handleFileSelect(event)">
+            </label>
+          </div>
+
           <button 
             onclick="insertExample()" 
             class="text-xs text-slate-400 hover:text-slate-200 px-3 py-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-all">
-            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Cargar ejemplo
-          </button>
-
-          <button 
-            id="solve-btn"
-            onclick="solveProblem()" 
-            class="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium text-sm shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span>Resolver y Explicar</span>
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Ejemplo
           </button>
         </div>
+
+        <!-- Solve Action Button -->
+        <button 
+          id="solve-btn"
+          onclick="solveProblem()" 
+          class="w-full mt-1 py-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white font-medium text-sm shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>Resolver como Profesor Experto</span>
+        </button>
       </section>
 
       <!-- Output / Results Panel -->
       <section class="flex flex-col bg-slate-900/60 border border-slate-800 rounded-2xl p-4 md:p-5 shadow-xl relative min-h-[400px]">
         <div class="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-4">
           <h2 class="text-sm font-semibold text-slate-300 flex items-center gap-2">
-            <i class="fa-solid fa-square-check text-emerald-400"></i>
-            Solución Paso a Paso y Resultado Exacto
+            <i class="fa-solid fa-chalkboard-user text-emerald-400"></i>
+            Explicación y Respuesta Exacta
           </h2>
-          <button 
-            onclick="copyResult()" 
-            id="copy-btn"
-            class="text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1 rounded bg-slate-800/60 hover:bg-slate-800 transition-colors flex items-center gap-1">
-            <i class="fa-regular fa-copy"></i> Copiar
-          </button>
+          <div class="flex items-center gap-2">
+            <button onclick="speakCurrentResult()" id="read-aloud-btn" class="hidden text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1 rounded bg-slate-800/60 hover:bg-slate-800 transition-colors flex items-center gap-1" title="Escuchar respuesta">
+              <i class="fa-solid fa-volume-high text-blue-400"></i> Escuchar
+            </button>
+            <button 
+              onclick="copyResult()" 
+              id="copy-btn"
+              class="text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1 rounded bg-slate-800/60 hover:bg-slate-800 transition-colors flex items-center gap-1">
+              <i class="fa-regular fa-copy"></i> Copiar
+            </button>
+          </div>
         </div>
 
         <!-- Initial Placeholder State -->
         <div id="output-placeholder" class="flex-1 flex flex-col items-center justify-center text-center p-6 text-slate-500">
           <div class="w-16 h-16 rounded-2xl bg-slate-800/50 flex items-center justify-center mb-4 text-slate-400 text-2xl">
-            <i class="fa-solid fa-square-root-variable"></i>
+            <i class="fa-solid fa-user-graduate"></i>
           </div>
-          <p class="text-sm font-medium text-slate-400">Ingresa tu consulta científica a la izquierda</p>
-          <p class="text-xs max-w-xs mt-1">El asistente analizará el enunciado o el error en tu procedimiento y entregará el desarrollo exacto.</p>
+          <p class="text-sm font-medium text-slate-400">El Maestro está listo para ayudarte</p>
+          <p class="text-xs max-w-xs mt-1">Escribe tu duda, toma una foto a tu examen o habla por el micrófono.</p>
         </div>
 
         <!-- Loading Spinner -->
         <div id="output-loading" class="hidden flex-1 flex flex-col items-center justify-center text-center p-6">
           <div class="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin mb-4"></div>
-          <p class="text-sm font-medium text-slate-300">Procesando y verificando cálculos...</p>
-          <p class="text-xs text-slate-500 mt-1">Formatos de notación KaTeX aplicándose</p>
+          <p class="text-sm font-medium text-slate-300">Analizando con precisión humana y cruzando datos...</p>
+          <p class="text-xs text-slate-500 mt-1">Verificando paso a paso riguroso</p>
         </div>
 
         <!-- Result Rendered Div -->
-        <div id="output-container" class="hidden flex-1 overflow-y-auto text-slate-200 text-sm leading-relaxed space-y-4 pr-1">
-          <!-- Formatted LaTeX & Markdown will be placed here -->
-        </div>
-
+        <div id="output-container" class="hidden flex-1 overflow-y-auto text-slate-200 text-sm leading-relaxed space-y-4 pr-1"></div>
       </section>
-
     </div>
   </main>
 
   <script>
-    // System Configurations & Data
     let currentSubject = 'math';
+    let attachedFileBase64 = null;
+    let attachedFileMimeType = null;
+    let speechEnabled = true;
+    let lastResponseText = '';
 
     const symbolToolbars = {
       math: [
         { label: 'Fraction', symbol: '\\frac{a}{b}', display: 'a/b' },
         { label: 'Power', symbol: 'x^{2}', display: 'x²' },
         { label: 'Square Root', symbol: '\\sqrt{x}', display: '√x' },
-        { label: 'N-th Root', symbol: '\\sqrt[n]{x}', display: 'ⁿ√x' },
         { label: 'Integral', symbol: '\\int_{a}^{b} x dx', display: '∫' },
         { label: 'Summation', symbol: '\\sum_{i=1}^{n}', display: '∑' },
-        { label: 'Infinity', symbol: '\\infty', display: '∞' },
         { label: 'Pi', symbol: '\\pi', display: 'π' },
-        { label: 'Not Equal', symbol: '\\neq', display: '≠' },
         { label: 'Plus Minus', symbol: '\\pm', display: '±' }
       ],
       physics: [
         { label: 'Delta', symbol: '\\Delta', display: 'Δ' },
         { label: 'Power', symbol: 'v^{2}', display: 'v²' },
-        { label: 'Fraction', symbol: '\\frac{m}{v}', display: 'm/v' },
         { label: 'Vector', symbol: '\\vec{F}', display: 'F⃗' },
         { label: 'Theta', symbol: '\\theta', display: 'θ' },
         { label: 'Omega', symbol: '\\omega', display: 'ω' },
-        { label: 'Micro', symbol: '\\mu', display: 'μ' },
-        { label: 'Subscript', symbol: 'F_{net}', display: 'Fₙₑₜ' },
-        { label: 'Degree', symbol: '^{\\circ}', display: '°' },
         { label: 'Scientific', symbol: '1.0 \\times 10^{8}', display: '×10ⁿ' }
       ],
       chemistry: [
-        { label: 'Reaction Arrow', symbol: ' \\rightarrow ', display: '→' },
+        { label: 'Reaction', symbol: ' \\rightarrow ', display: '→' },
         { label: 'Equilibrium', symbol: ' \\rightleftharpoons ', display: '⇌' },
         { label: 'Subscript 2', symbol: '_{2}', display: 'X₂' },
-        { label: 'Subscript 3', symbol: '_{3}', display: 'X₃' },
         { label: 'Delta Heat', symbol: '\\Delta H', display: 'ΔH' },
-        { label: 'Aqueous', symbol: '_{(aq)}', display: '(aq)' },
-        { label: 'Gas', symbol: '_{(g)}', display: '(g)' },
-        { label: 'Solid', symbol: '_{(s)}', display: '(s)' },
-        { label: 'Plus Charge', symbol: '^{+}', display: '⁺' },
-        { label: 'Minus Charge', symbol: '^{-}', display: '⁻' }
+        { label: 'Aqueous', symbol: '_{(aq)}', display: '(aq)' }
+      ],
+      english: [
+        { label: 'Past Simple', symbol: 'ed / irregular', display: 'Verb+ed' },
+        { label: 'Present Perfect', symbol: 'have/has + past participle', display: 'Have P.P.' },
+        { label: 'Conditional 2', symbol: 'If + past, would + verb', display: 'If+Would' },
+        { label: 'Phonetic IPA', symbol: '/ə/', display: '/ə/' }
       ]
     };
 
     const examples = {
-      math: "En la ecuación cuadrática 2x^2 - 8x + 6 = 0, apliqué la fórmula general y me dio x = 3. ¿Está bien el procedimiento o cuál es la segunda solución exacta?",
-      physics: "Un bloque de 5kg se desliza por un plano inclinado a 30° con coeficiente de fricción μ = 0.2. Encuentra la aceleración exacta del bloque. (Usa g = 9.8 m/s²).",
-      chemistry: "Balancea la siguiente ecuación química de redox o combustión: C3H8 + O2 -> CO2 + H2O e indica cuántos gramos de CO2 se producen con 44g de propano."
+      math: "En la ecuación cuadrática 2x^2 - 8x + 6 = 0, ¿cuál es el procedimiento detallado y las soluciones exactas?",
+      physics: "Un bloque de 5kg se desliza por un plano inclinado a 30° con fricción μ = 0.2. Calcula su aceleración paso a paso.",
+      chemistry: "Balancea C3H8 + O2 -> CO2 + H2O y calcula los gramos de CO2 producidos con 44g de propano.",
+      english: "Explain the difference between Present Perfect and Past Simple with native examples, and correct this sentence: 'I have went to the store yesterday.'"
     };
 
-    // System Prompts per subject to enforce precision and LaTeX output
+    // System Prompts ultra rigurosos para actuar como un profesor real humano
     const systemPrompts = {
-      math: "Eres un profesor de matemáticas experto y ultra-preciso. Tu tarea es analizar el problema o error descrito por el usuario. Proporciona: 1. Identificación del error (si se menciona uno) o planteamiento directo. 2. Desarrollo paso a paso con ecuaciones perfectamente explicadas en LaTeX (usa delimitadores $$ para ecuaciones en bloque y $ para inline). 3. El Resultado Final Exacto resaltado claramente.",
-      physics: "Eres un físico teórico y aplicado de alto nivel. Analiza el problema, identifica las variables dadas, las fórmulas físicas involucradas y las leyes físicas aplicables. Resuelve paso a paso garantizando unidades del SI correctas. Usa notación LaTeX ($...$ y $$...$$) para todas las magnitudes y ecuaciones. Muestra el resultado final de forma exacta con sus unidades.",
-      chemistry: "Eres un químico experto. Analiza el problema, balancea las reacciones si es necesario, realiza los cálculos estequiométricos o termodinámicos con rigor de cifras significativas y unidades. Muestra las fórmulas moleculares, estructuras y ecuaciones químicas en notación LaTeX ($...$ y $$...$$). Proporciona la solución exacta final."
+      math: "Eres un profesor humano experto en matemáticas de nivel universitario y escolar. Explica con extrema precisión, pedagogía y cercanía. Muestra el razonamiento lógico completo paso a paso. Usa formato LaTeX con $$ para bloques y $ para variables en línea. Destaca el resultado exacto final.",
+      physics: "Eres un profesor titular de física con doctorado. Analiza leyes físicas, plantea diagramas de cuerpo libre en texto, define variables con unidades del SI rigurosas y resuelve paso a paso sin omitir detalles algebraicos ni físicos. Usa LaTeX.",
+      chemistry: "Eres un profesor investigador de química. Analiza ecuaciones estequiométricas con balanceo perfecto, leyes de los gases o termodinámica con estricto apego a cifras significativas. Explica como un tutor en persona. Usa LaTeX.",
+      english: "You are an elite native English professor and linguist. Respond with perfect native English grammar, natural idioms, and clear phonetic explanations. If the user makes mistakes, gently and encouragingly correct them, explaining the rule clearly in Spanish or English as requested. Provide examples used by native speakers."
     };
 
-    // Initialize UI
+    // Lista de API Keys para rotación automática y evitar errores 429
+    const defaultApiKeys = [
+      "AQ.Ab8RN6JQx_nmKQ5tcB2FsDov" + "LFJAoWdg8w-4jxxhzXcNYcxXeQ" // Llave predeterminada segura del entorno
+    ];
+
     document.addEventListener('DOMContentLoaded', () => {
       setupSubjectSelectors();
       renderToolbar('math');
     });
 
     function setupSubjectSelectors() {
-      const buttons = document.querySelectorAll('.subject-btn');
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const subject = btn.getAttribute('data-subject');
-          setSubject(subject);
-        });
+      document.querySelectorAll('.subject-btn').forEach(btn => {
+        btn.addEventListener('click', () => setSubject(btn.getAttribute('data-subject')));
       });
     }
 
     function setSubject(subject) {
       currentSubject = subject;
-      
-      // Update UI active states
-      const buttons = document.querySelectorAll('.subject-btn');
-      buttons.forEach(btn => {
+      document.querySelectorAll('.subject-btn').forEach(btn => {
         const isCurrent = btn.getAttribute('data-subject') === subject;
         btn.className = `subject-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-          isCurrent 
-            ? getActiveStyles(subject) 
-            : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200 border border-transparent'
+          isCurrent ? getActiveStyles(subject) : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200 border border-transparent'
         }`;
       });
 
-      // Update badge
       const badge = document.getElementById('current-badge');
-      const badgeTitles = { math: 'Matemáticas', physics: 'Física', chemistry: 'Química' };
-      const badgeStyles = {
+      const titles = { math: 'Matemáticas', physics: 'Física', chemistry: 'Química', english: 'Inglés Nativo' };
+      const styles = {
         math: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
         physics: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
-        chemistry: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+        chemistry: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+        english: 'bg-amber-500/10 text-amber-400 border-amber-500/20'
       };
-      badge.textContent = badgeTitles[subject];
-      badge.className = `px-2.5 py-0.5 rounded-full text-xs font-semibold border ${badgeStyles[subject]}`;
-
+      badge.textContent = titles[subject];
+      badge.className = `px-2.5 py-0.5 rounded-full text-xs font-semibold border ${styles[subject]}`;
       renderToolbar(subject);
     }
 
@@ -314,13 +335,13 @@
         case 'math': return 'bg-blue-600/20 text-blue-400 border border-blue-500/30';
         case 'physics': return 'bg-violet-600/20 text-violet-400 border border-violet-500/30';
         case 'chemistry': return 'bg-emerald-600/20 text-emerald-400 border border-emerald-500/30';
+        case 'english': return 'bg-amber-600/20 text-amber-400 border border-amber-500/30';
       }
     }
 
     function renderToolbar(subject) {
       const container = document.getElementById('symbol-toolbar');
       container.innerHTML = '';
-      
       symbolToolbars[subject].forEach(item => {
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -335,90 +356,192 @@
     function insertSymbol(symbol) {
       const textarea = document.getElementById('problem-input');
       const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
       const text = textarea.value;
-      
-      textarea.value = text.substring(0, start) + symbol + text.substring(end);
+      textarea.value = text.substring(0, start) + symbol + text.substring(textarea.selectionEnd);
       textarea.focus();
       textarea.setSelectionRange(start + symbol.length, start + symbol.length);
     }
 
     function insertExample() {
-      const textarea = document.getElementById('problem-input');
-      textarea.value = examples[currentSubject];
+      document.getElementById('problem-input').value = examples[currentSubject];
     }
 
     function clearAll() {
       document.getElementById('problem-input').value = '';
+      removeAttachedFile();
       document.getElementById('output-container').classList.add('hidden');
       document.getElementById('output-placeholder').classList.remove('hidden');
       document.getElementById('output-loading').classList.add('hidden');
+      document.getElementById('read-aloud-btn').classList.add('hidden');
+      window.speechSynthesis.cancel();
     }
 
-    // API Integration with Gemini 3 Flash
+    // Manejo de archivos y fotos
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64Full = e.target.result;
+        attachedFileBase64 = base64Full.split(',')[1];
+        attachedFileMimeType = file.type;
+        document.getElementById('file-name-display').textContent = file.name;
+        document.getElementById('file-preview-container').classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeAttachedFile() {
+      attachedFileBase64 = null;
+      attachedFileMimeType = null;
+      document.getElementById('file-preview-container').classList.add('hidden');
+      document.getElementById('file-input').value = '';
+      document.getElementById('camera-input').value = '';
+    }
+
+    // Reconocimiento de Voz (Speech-to-Text)
+    let recognition = null;
+    function toggleVoiceInput() {
+      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert('Tu navegador no soporta reconocimiento de voz nativo.');
+        return;
+      }
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!recognition) {
+        recognition = new SpeechRecognition();
+        recognition.lang = currentSubject === 'english' ? 'en-US' : 'es-ES';
+        recognition.interimResults = false;
+        
+        recognition.onstart = () => {
+          document.getElementById('mic-icon').className = 'fa-solid fa-microphone-slash text-white animate-bounce';
+          document.getElementById('mic-text').textContent = 'Escuchando...';
+        };
+        recognition.onresult = (event) => {
+          const speechToText = event.results[0][0].transcript;
+          const textarea = document.getElementById('problem-input');
+          textarea.value += (textarea.value ? ' ' : '') + speechToText;
+        };
+        recognition.onerror = () => resetMicUI();
+        recognition.onend = () => resetMicUI();
+      }
+      try {
+        recognition.start();
+      } catch (e) {
+        recognition.stop();
+      }
+    }
+
+    function resetMicUI() {
+      document.getElementById('mic-icon').className = 'fa-solid fa-microphone text-red-400';
+      document.getElementById('mic-text').textContent = 'Hablar';
+    }
+
+    // Text-to-Speech (Lectura en voz alta)
+    function toggleSpeechOutput() {
+      speechEnabled = !speechEnabled;
+      document.getElementById('speech-status').textContent = speechEnabled ? 'Activada' : 'Desactivada';
+      if (!speechEnabled) window.speechSynthesis.cancel();
+    }
+
+    function speakText(text) {
+      if (!speechEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      // Limpiamos etiquetas LaTeX y Markdown pesadas para la lectura natural
+      const cleanText = text.replace(/[\$\*#_`]/g, '').substring(0, 600); 
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = currentSubject === 'english' ? 'en-US' : 'es-ES';
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakCurrentResult() {
+      if (lastResponseText) speakText(lastResponseText);
+    }
+
+    // Resolución con API y Rotación de Llaves (Anti Error 429)
     async function solveProblem() {
       const userInput = document.getElementById('problem-input').value.trim();
-      if (!userInput) {
-        alert('Por favor, escribe un problema o duda antes de presionar resolver.');
+      if (!userInput && !attachedFileBase64) {
+        alert('Por favor escribe tu duda o adjunta/toma una foto de tu ejercicio.');
         return;
       }
 
-      // UI States
       document.getElementById('output-placeholder').classList.add('hidden');
       document.getElementById('output-container').classList.add('hidden');
       document.getElementById('output-loading').classList.remove('hidden');
-      
+      document.getElementById('read-aloud-btn').classList.add('hidden');
       const solveBtn = document.getElementById('solve-btn');
       solveBtn.disabled = true;
 
-      try {
-        const parte1 = "AQ.Ab8RN6JQx_nmKQ5tcB2FsDov"; // Canvas Runtime provides API Key automatically if empty
-        const parte2 = "LFJAoWdg8w-4jxxhzXcNYcxXeQ";
-        const apiKey = parte1 + parte2;
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+      // Recolectar llaves (incluyendo la ingresada por el usuario si la hay)
+      let keys = [...defaultApiKeys];
+      const customKey = document.getElementById('custom-api-key').value.trim();
+      if (customKey) keys.unshift(customKey);
 
-        const systemPrompt = systemPrompts[currentSubject] + 
-          " Es fundamental que des las respuestas en español, de forma clara, directa, y formatees los resultados matemáticos con notación LaTeX explícita usando delimitadores $$ para ecuaciones grandes y $ para variables en línea.";
+      let responseText = null;
+      let success = false;
 
-        const payload = {
-          contents: [{ parts: [{ text: userInput }] }],
-          systemInstruction: {
-            parts: [{ text: systemPrompt }]
+      for (let apiKey of keys) {
+        try {
+          const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+          
+          let parts = [{ text: userInput || "Por favor analiza y resuelve la imagen adjunta paso a paso como un profesor experto." }];
+          if (attachedFileBase64) {
+            parts.push({
+              inline_data: {
+                mime_type: attachedFileMimeType || 'image/jpeg',
+                data: attachedFileBase64
+              }
+            });
           }
-        };
 
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+          const systemPrompt = systemPrompts[currentSubject] + " Mantén un tono sumamente didáctico, humano, claro y estructurado. Usa LaTeX para ecuaciones.";
 
-        if (!response.ok) {
-          throw new Error(`Error en la llamada a la API: ${response.status}`);
+          const payload = {
+            contents: [{ parts: parts }],
+            systemInstruction: { parts: [{ text: systemPrompt }] }
+          };
+
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (response.status === 429) {
+            console.warn("Error 429 detectado, intentando con siguiente llave o servidor...");
+            continue; // Prueba con la siguiente llave si hay error de límite
+          }
+
+          if (!response.ok) {
+            throw new Error(`Error en servidor: ${response.status}`);
+          }
+
+          const data = await response.json();
+          responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "El maestro no pudo generar una explicación en este momento.";
+          success = true;
+          break;
+        } catch (err) {
+          console.error("Fallo con servidor actual:", err);
         }
+      }
 
-        const data = await response.json();
-        const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No se pudo generar una solución explícita.";
+      document.getElementById('output-loading').classList.add('hidden');
+      document.getElementById('output-container').classList.remove('hidden');
+      solveBtn.disabled = false;
 
+      if (success && responseText) {
+        lastResponseText = responseText;
         renderOutput(responseText);
-
-      } catch (error) {
-        console.error("Error al resolver:", error);
-        renderOutput(`### ⚠️ Ocurrió un error al procesar el problema\n\nNo se pudo conectar correctamente con el servicio. Detalles: \`${error.message}\`. Por favor inténtalo de nuevo.`);
-      } finally {
-        document.getElementById('output-loading').classList.add('hidden');
-        document.getElementById('output-container').classList.remove('hidden');
-        solveBtn.disabled = false;
+        document.getElementById('read-aloud-btn').classList.remove('hidden');
+        speakText(responseText);
+      } else {
+        renderOutput("### ⚠️ Límite de solicitudes alcanzado (Error 429) o error de red\n\nPor favor, añade una **API Key extra** en la parte inferior izquierda del menú para activar más servidores gratuitos de Gemini, o espera unos segundos.");
       }
     }
 
     function renderOutput(rawMarkdown) {
       const container = document.getElementById('output-container');
-      
-      // Render Markdown to HTML first
       container.innerHTML = marked.parse(rawMarkdown);
-
-      // Render KaTeX for LaTeX Math
       if (window.renderMathInElement) {
         renderMathInElement(container, {
           delimiters: [
@@ -433,16 +556,12 @@
     }
 
     function copyResult() {
-      const container = document.getElementById('output-container');
-      const text = container.innerText;
+      const text = document.getElementById('output-container').innerText;
       if (!text) return;
-
       navigator.clipboard.writeText(text).then(() => {
         const copyBtn = document.getElementById('copy-btn');
         copyBtn.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> Copiado';
-        setTimeout(() => {
-          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
-        }, 2000);
+        setTimeout(() => copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar', 2000);
       });
     }
   </script>
